@@ -16,7 +16,7 @@ The application also includes secure user authentication and profile management.
 - Google & GitHub OAuth
 - React Hot Toast
 - REST API
-- Vercel (Deployment)
+- Vercel 
 
 ##  Key Features
 
