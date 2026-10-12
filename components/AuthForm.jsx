@@ -47,7 +47,7 @@ export default function AuthForm({ signup = false }) {
       router.push(destination);
       router.refresh();
     } catch (error) {
-      toast.error(error.message || "আবার চেষ্টা করুন");
+      toast.error(error.message || "পুনরায় চেষ্টা করুন");
     } finally {
       setLoading(false);
     }
