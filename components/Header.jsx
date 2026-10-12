@@ -12,7 +12,6 @@ import { categories, bn } from "@/lib/data";
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
-
   const { data: session } = authClient.useSession();
 
   const [products, setProducts] = useState([]);
@@ -33,7 +32,6 @@ export default function Header() {
         if (!response.ok) return;
 
         const data = await response.json();
-
         setProducts(data.products || []);
       } catch (error) {
         setProducts([]);
@@ -47,9 +45,7 @@ export default function Header() {
     const result = await authClient.signOut();
 
     if (result.error) {
-      toast.error(
-        result.error.message || "সাইন আউট করা যায়নি"
-      );
+      toast.error(result.error.message || "সাইন আউট করা যায়নি");
       return;
     }
 
@@ -61,16 +57,9 @@ export default function Header() {
 
   return (
     <header className="bg-white border-b border-gray-200">
-
-      {/* Main Header */}
-      <div className="wrap flex items-center justify-between py-5 gap-5">
-
-        {/* Logo and Website Name - Moved 12px Down */}
-        <Link
-          href="/"
-          className="relative top-3 flex items-center gap-2"
-        >
-          <span className="bg-brand text-white h-15 w-10 rounded-xl flex items-center justify-center text-xl">
+      <div className="wrap flex min-h-[80px] items-center justify-between gap-5 py-4">
+        <Link href="/" className="flex items-center gap-2">
+          <span className="bg-brand text-white h-10 w-10 shrink-0 rounded-xl flex items-center justify-center text-xl">
             🌿
           </span>
 
@@ -85,7 +74,6 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Authentication Section */}
         {session?.user ? (
           <div className="relative">
             <button
@@ -111,7 +99,6 @@ export default function Header() {
 
             {menuOpen && (
               <div className="absolute right-0 top-11 z-30 panel shadow-xl p-4 w-60">
-
                 <p className="font-semibold text-sm">
                   {session.user.name}
                 </p>
@@ -164,8 +151,7 @@ export default function Header() {
         )}
       </div>
 
-      {/* Category Navigation */}
-      <nav className="border-t border-gray-100">
+      <nav className="border-t border-gray-100 mt-2">
         <div className="wrap flex items-center gap-1 sm:gap-3 overflow-x-auto py-2 whitespace-nowrap text-sm">
           {categories.map((category) => (
             <Link
@@ -183,7 +169,6 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Price Marquee */}
       <div className="border-t border-gray-100 py-2 overflow-hidden text-xs min-h-9">
         {products.length > 0 && (
           <Marquee
@@ -192,10 +177,7 @@ export default function Header() {
             gradient={false}
           >
             {products.map((product) => (
-              <span
-                className="mx-5"
-                key={product.id}
-              >
+              <span className="mx-5" key={product.id}>
                 {product.emoji} {product.name}{" "}
                 {bn(product.price)} টাকা/
                 {String(product.unit).replace("প্রতি ", "")}{" "}
