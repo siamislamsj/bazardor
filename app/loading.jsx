@@ -1,0 +1,1 @@
+export default function Loading(){return <div className="wrap py-8"><div className="skeleton h-56 mb-8"/><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">{Array.from({length:6},(_,i)=><div key={i} className="skeleton h-40"/>)}</div></div>}
