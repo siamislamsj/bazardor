@@ -26,7 +26,7 @@ export default function AuthForm({ signup = false }) {
     }
 
     if (signup && password !== confirmPassword) {
-      toast.error("পাসওয়ার্ড মিলছে না");
+      toast.error("পাসওয়ার্ড মিলছে না, আবার চেষ্টা করুন");
       return;
     }
 
